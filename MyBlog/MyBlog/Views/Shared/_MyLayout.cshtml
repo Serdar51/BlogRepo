@@ -1,0 +1,749 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>My Blog</title>
+    @RenderSection("head", false)
+
+    <style type='text/css'>
+        body {
+            margin: 0px;
+            padding: 0px;
+            color: #333;
+            font-family: Tahoma, Geneva, sans-serif;
+            font-size: 13px;
+            line-height: 1.5em;
+            background: url(http://www.cxcgameworks.com/tr/img/blog-background-01.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        p {
+            margin: 0px;
+            padding: 0;
+        }
+
+        img {
+            border: none;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+            ul li {
+                margin: 0;
+                padding: 0;
+            }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #000;
+        }
+
+        h1 {
+            font-size: 40px;
+            font-weight: normal;
+            margin: 0 0 20px 0;
+            padding: 5px 0;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: normal;
+            margin: 0 0 20px 0;
+            padding: 10px 0 15px 0;
+        }
+
+        h3 {
+            font-size: 21px;
+            font-weight: normal;
+            margin: 0 0 15px 0;
+            padding: 0;
+            padding: 0 0 10px 0;
+        }
+
+        h4 {
+            font-size: 18px;
+            margin: 0 0 20px 0;
+            padding: 0 0 10px 0;
+            ;
+        }
+
+        h5 {
+            font-size: 16px;
+            margin: 0 0 10px 0;
+            padding: 0;
+        }
+
+        h6 {
+            font-size: 14px;
+            margin: 0 0 5px 0;
+            padding: 0;
+        }
+
+        .cleaner {
+            clear: both;
+            width: 100%;
+            height: 0px;
+            font-size: 0px;
+        }
+
+        .cleaner_h10 {
+            clear: both;
+            width: 100%;
+            height: 10px;
+        }
+
+        .cleaner_h20 {
+            clear: both;
+            width: 100%;
+            height: 20px;
+        }
+
+        .cleaner_h30 {
+            clear: both;
+            width: 100%;
+            height: 30px;
+        }
+
+        .cleaner_h40 {
+            clear: both;
+            width: 100%;
+            height: 40px;
+        }
+
+        .cleaner_h50 {
+            clear: both;
+            width: 100%;
+            height: 50px;
+        }
+
+        .cleaner_h60 {
+            clear: both;
+            width: 100%;
+            height: 60px;
+        }
+
+        .hr_divider {
+            background: url(../images/templatemo_hr_divider.jpg) bottom repeat-x;
+        }
+
+        .float_l {
+            float: left;
+        }
+
+        .float_r {
+            float: right;
+        }
+
+        .image_wrapper {
+            display: inline-block;
+            padding: 4px;
+            border: 1px solid #666;
+            background: none;
+            margin-bottom: 10px;
+        }
+
+        .image_fl {
+            float: left;
+            margin: 3px 15px 0 0;
+        }
+
+        .image_fr {
+            float: right;
+            margin: 3px 0 0 15px;
+        }
+
+        blockquote {
+            font-style: italic;
+            margin-left: 10px;
+        }
+
+        cite {
+            font-weight: bold;
+            color: #3b3823;
+        }
+
+            cite span {
+                color: #696443;
+            }
+
+        em {
+            color: #e55822;
+        }
+
+        .tmo_list {
+            margin: 20px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+            .tmo_list li {
+                background: url(../images/templatemo_list.png) no-repeat scroll 0 0px;
+                margin: 0 0 20px;
+                padding: 3px 0 3px 25px;
+                line-height: 1em;
+            }
+
+                .tmo_list li a {
+                    color: #333;
+                    text-decoration: none;
+                }
+
+                    .tmo_list li a:hover {
+                        color: #d06802;
+                        text-decoration: none;
+                    }
+
+        a.continue {
+            color: #F00;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        #templatemo_body_wrapper {
+            width: 100%;
+            background: url(../images/templatemo_body_top.jpg) top repeat-x;
+        }
+
+        #templatemo_wrapper {
+            width: 1000px;
+            padding: 0 10px;
+            margin: 0 auto;
+        }
+
+        #templatemo_header {
+            width: 940px;
+            padding: 10px 30px;
+        }
+
+        #site_title {
+            float: left;
+            width: 500px;
+            padding: 40px 0 30px;
+            font-family: Georgia, "Times New Roman", Times, serif;
+        }
+
+            #site_title a {
+                margin: 0px;
+                padding: 0px;
+                font-size: 50px;
+                color: #ffffff;
+                font-weight: normal;
+                text-decoration: none;
+            }
+
+                #site_title a span {
+                    color: #F00;
+                }
+
+                #site_title a .tagline {
+                    font-size: 12px;
+                    color: #fff;
+                    font-weight: normal;
+                    margin-left: 20px;
+                }
+
+        #search_box {
+            float: right;
+            width: 280px;
+            height: 30px;
+        }
+
+            #search_box form {
+                clear: both;
+                width: 280px;
+                height: 30px;
+                padding: 0;
+            }
+
+        #searchfield {
+            height: 20px;
+            width: 160px;
+            padding: 2px 5px;
+            color: #666666;
+            line-height: 0;
+            background: none;
+            border: 1px solid #444444;
+        }
+
+        #searchbutton {
+            height: 25px;
+            width: 70px;
+            color: #838383;
+            padding: 0 0 3px 0;
+            margin: 0;
+            cursor: pointer;
+            background: #161616;
+            border: 1px solid #444444;
+            vertical-align: bottom;
+        }
+
+        /* menu */
+
+        #templatemo_menu {
+            clear: both;
+            width: 1000px;
+            height: 35px;
+        }
+
+            #templatemo_menu ul {
+                float: left;
+                display: block;
+                width: 700px;
+                height: 35px;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+                #templatemo_menu ul li {
+                    padding: 0;
+                    margin: 0;
+                    display: inline-block;
+                }
+
+                    #templatemo_menu ul li a {
+                        position: relative;
+                        float: left;
+                        display: block;
+                        height: 21px;
+                        padding: 7px 28px;
+                        font-size: 15px;
+                        color: #fff;
+                        text-decoration: none;
+                        font-weight: normal;
+                        text-align: center;
+                        outline: none;
+                    }
+
+                        #templatemo_menu ul li a:hover, #templatemo_menu ul .current {
+                            color: #000;
+                            background: url(../images/templatemo_menu_right.jpg) no-repeat top right;
+                        }
+
+                            #templatemo_menu ul li a:hover span, #templatemo_menu ul .current span {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 28px;
+                                height: 35px;
+                                background: url(../images/templatemo_menu_left.jpg);
+                            }
+
+        #register_box {
+            float: right;
+            width: 250px;
+            color: #fff;
+            font-size: 20px;
+            padding-top: 10px;
+        }
+
+            #register_box .signup {
+                color: #fff;
+                font-weight: bold;
+                text-decoration: none;
+            }
+
+            #register_box .new_reg {
+                color: #fff;
+                font-weight: bold;
+                text-decoration: none;
+            }
+        /* end of menu */
+
+        /* content */
+
+        #templatemo_main {
+            width: 920px;
+            padding: 40px;
+            background: #9fbdc1;
+        }
+
+        #templatemo_content {
+            float: left;
+            width: 620px;
+        }
+
+        .post_box {
+            clear: both;
+            margin-bottom: 40px;
+        }
+
+            .post_box h2 {
+                margin-bottom: 5px;
+                padding-bottom: 0px;
+            }
+
+                .post_box h2 a {
+                    text-decoration: none;
+                }
+
+            .post_box .news_meta {
+                margin-bottom: 10px;
+                font-size: 11px;
+                color: #666;
+            }
+
+                .post_box .news_meta a {
+                    color: #666;
+                    text-decoration: underline;
+                }
+
+                    .post_box .news_meta a:hover {
+                        color: #990000;
+                        text-decoration: underline;
+                    }
+
+        .pb_last {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        #templatemo_sidebar {
+            float: right;
+            width: 260px;
+        }
+
+            #templatemo_sidebar h3 {
+                display: block;
+                height: 23px;
+                padding: 10px;
+                color: #000;
+                font-family: Georgia, "Times New Roman", Times, serif;
+                background: url(../images/templatemo_sidebar_title.jpg) no-repeat;
+            }
+
+        #aboutus {
+            padding: 20px;
+            background: #000;
+            color: #a5a5a5;
+            margin-bottom: 20px;
+        }
+
+            #aboutus h3 {
+                color: #fff;
+                padding: 0;
+                font-family: Georgia, "Times New Roman", Times, serif;
+            }
+
+        .sidebar_box {
+            clear: both;
+            margin-bottom: 20px;
+            width: 260px;
+        }
+
+        .ads_125 {
+            display: block;
+            float: left;
+            margin: 0 10px 10px 0;
+            width: 125px;
+            height: 125px;
+            background: #111;
+        }
+
+        .odd {
+            margin-right: 0;
+        }
+
+        .sidebar_menu {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+            .sidebar_menu li {
+                margin: 0 0 3px 0;
+                padding: 3px 0;
+                border-bottom: 1px solid #ddd;
+            }
+
+                .sidebar_menu li a {
+                    text-decoration: none;
+                    font-size: 11px;
+                }
+
+                    .sidebar_menu li a span {
+                        color: #f00;
+                    }
+
+        .sm_two_col {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+            .sm_two_col li {
+                margin: 0;
+                padding: 0;
+            }
+
+                .sm_two_col li a {
+                    display: block;
+                    float: left;
+                    width: 130px;
+                    text-decoration: none;
+                    font-size: 11px;
+                    margin: 0 0 3px 0;
+                    padding: 3px 0;
+                    border-bottom: 1px solid #ddd;
+                }
+
+                    .sm_two_col li a span {
+                        color: #f00;
+                    }
+
+        #templatemo_sidebar form {
+            padding: 0;
+            margin: 0;
+        }
+
+            #templatemo_sidebar form .newsletter_email {
+                width: 160px;
+                height: 28px;
+                background: url(../images/templatemo_subscribe.jpg) no-repeat;
+                border: none;
+                padding: 0 5px;
+            }
+
+            #templatemo_sidebar form #submit {
+                background: none;
+                border: none;
+                text-decoration: underline;
+                font-size: 11px;
+                cursor: pointer;
+            }
+
+        .icon_link {
+            display: block;
+            float: left;
+            margin-left: 20px;
+            width: 50px;
+        }
+
+        /* end of content */
+
+        /* footer */
+
+        #templatemo_footer_wrapper {
+            width: 100%;
+            background: #000;
+        }
+
+        #templatemo_footer {
+            width: 920px;
+            padding: 30px 40px;
+            margin: 0 auto;
+            color: #ddd;
+        }
+
+            #templatemo_footer a {
+                color: #9d9d9d;
+                text-decoration: none;
+            }
+
+            #templatemo_footer h4 {
+                color: #bebebe;
+                font-weight: normal;
+            }
+
+        .footer_box {
+            float: left;
+            padding-right: 24px;
+            margin-right: 25px;
+            border-right: 1px solid #131313;
+        }
+
+        .col_w160 {
+            width: 140px;
+        }
+
+        .col_w260 {
+            width: 200px;
+        }
+
+        .col_300 {
+            width: 300px;
+        }
+
+        .fb_last {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        .footer_menu {
+            margin: 20px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+            .footer_menu li {
+                background: url(../images/templatemo_list.jpg) no-repeat scroll 0 0px;
+                margin: 0 0 10px;
+                padding: 0 0 5px 25px;
+                line-height: 1em;
+            }
+
+                .footer_menu li a {
+                    color: #9d9d9d;
+                    text-decoration: none;
+                }
+
+                    .footer_menu li a:hover {
+                        color: #fff;
+                        text-decoration: none;
+                    }
+        /* end of footer */
+
+        #templatemo_copyright {
+            width: 920px;
+            padding: 15px 40px;
+            margin: 0 auto;
+            color: #333;
+            background: #fff;
+            text-align: center;
+        }
+    </style>
+
+    <script language="javascript" type="text/javascript">
+
+        function clearText(field) {
+        if (field.defaultValue == field.value) field.value = '';
+        else if (field.value == '') field.value = field.defaultValue;
+    }
+
+    </script>
+</head>
+
+<body>
+    <div id="templatemo_body_wrapper">
+        <div id="templatemo_wrapper">
+
+            <div id="templatemo_header">
+
+                <div id="site_title">
+                    @Html.ActionLink("MyBlog", "Index", "Home")
+                </div> <!-- end of site_title -->
+            </div> <!-- end of header -->
+
+            <div id="templatemo_menu">
+                <ul>
+                    <li><a href="/Home/index"><span></span>Home</a></li>
+                </ul>
+            </div> <!-- end of templatemo_menu -->
+
+            <div id="templatemo_main">
+
+                @RenderBody()
+
+                <div id="templatemo_sidebar">
+                    <div class="cleaner_h20"></div>
+
+                    <div class="sidebar_box">
+                        <h3>Categories</h3>
+
+                        <ul class="sidebar_menu">
+                            <li><a href="#">&raquo; Web Design Tips <span>(260)</span></a></li>
+                            <li><a href="#">&raquo; Beautiful Wallpapers <span>(380)</span></a></li>
+                            <li><a href="#">&raquo; Free Fonts <span>(125)</span></a></li>
+                            <li><a href="#">&raquo; Digital Illustrations <span>(215)</span></a></li>
+                        </ul>
+
+                    </div>
+                    <div class="sidebar_box">
+                        <h3>Archives</h3>
+                        <ul class="sm_two_col">
+                            <li><a href="#">&raquo; February 2048</a></li>
+                            <li><a href="#">&raquo; January 2048</a></li>
+                            <li class="cleaner"><a href="#">&raquo; December 2047</a></li>
+                            <li><a href="#">&raquo; Novermber 2047</a></li>
+                            <li><a href="#">&raquo; October 2047</a></li>
+                            <li><a href="#">&raquo; September 2047</a></li>
+                        </ul>
+
+                        <div class="cleaner"></div>
+                    </div>
+
+
+                    <div class="sidebar_box">
+
+                        <h3>Newsletter</h3>
+
+                        <form method="get" action="#">
+                            <input type="text" id="user" name="user" class="newsletter_email" value="Enter your email address" onfocus="clearText(this)" onblur="clearText(this)" />
+                            <input style="font-weight: bold;" type="submit" name="submit" id="submit" value="Subscribe" />
+                        </form>
+
+                        <div class="cleaner_h20"></div>
+                        <a href="#" class="icon_link"><img src="images/templatemo_rss.jpg" alt="rss" /></a><a href="#" class="icon_link"><img src="images/templatemo_twitter.jpg" alt="twitter" /></a>
+                    </div>
+
+                </div>
+
+                <div class="cleaner"></div>
+            </div>
+
+        </div>
+        <div class="cleaner"></div>
+    </div>
+
+
+    <div id="templatemo_footer_wrapper">
+        <div id="templatemo_footer">
+
+            <div class="footer_box col_w300">
+                <h4>Related Posts</h4>
+                <ul class="footer_menu">
+                    <li><a href="#">Duis vitae velit sed lesuada dignissim</a></li>
+                    <li><a href="#">Donec mollis aliquet ligula</a></li>
+                    <li><a href="#">Maecenas adipiscing elementum ipsum</a></li>
+                    <li><a href="#">Vivamus leo velit, convallis id</a></li>
+                    <li><a href="#">Curabitur condimentum porttitor</a></li>
+                </ul>
+            </div>
+
+            <div class="footer_box col_w160">
+                <h4>Authors</h4>
+                <ul class="footer_menu">
+                    <li><a href="#">Lesuada digni</a></li>
+                    <li><a href="#">Aliquet ligula</a></li>
+                    <li><a href="#">Convallis id</a></li>
+                    <li><a href="#">Maecenas adipis</a></li>
+                    <li><a href="#">Porttitor</a></li>
+                </ul>
+            </div>
+
+            <div class="footer_box col_w160">
+                <h4>Partners</h4>
+                <ul class="footer_menu">
+                    <li><a href="http://www.flashmo.com/page/1" target="_parent">Flash Components</a></li>
+                    <li><a href="http://www.templatemo.com/page/1" target="_parent">Website Templates</a></li>
+                    <li><a href="http://www.webdesignmo.com/blog" target="_parent">Web Design</a></li>
+                    <li><a href="http://www.templatemo.com" target="_parent">CSS Templates</a></li>
+                    <li><a href="http://www.koflash.com" target="_parent">Flash Web Gallery</a></li>
+                </ul>
+            </div>
+
+            <div class="footer_box col_w260 fb_last">
+                <h4>Tag Cloud</h4>
+                <a href="#" style="font-size:12px">Aenean</a> <a href="#" style="font-size:11px">Cursus</a> <a href="#" style="font-size:16px">Maecenas</a> <a href="#" style="font-size:11px">Aliquam Ligula</a> <a href="#" style="font-size:20px">Egestas</a> <a href="#" style="font-size:16px">Suscipit</a> <a href="#" style="font-size:12px">Sapien</a> <a href="#" style="font-size:28px">Dignissim</a> <a href="#" style="font-size:14px">Vestibulum</a> <a href="#" style="font-size:12px">Lorem</a> <a href="#" style="font-size:14px">Urnain</a> <a href="#" style="font-size:20px">Neque</a> <a href="#" style="font-size:12px">Aenean</a>
+            </div>
+
+            <div class="cleaner"></div>
+        </div>
+    </div>
+
+    <div id="templatemo_copyright">
+        Copyright © 2015 <a href="#">Your Company Name</a> |
+        <a href="http://www.iwebsitetemplate.com" target="_parent">Website Templates</a> by <a href="http://www.templatemo.com" target="_parent">Free CSS Templates</a>
+    </div>
+</body>
+
+</html>
