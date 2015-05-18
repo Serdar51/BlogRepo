@@ -631,12 +631,43 @@
                 <div id="site_title">
                     @Html.ActionLink("MyBlog", "Index", "Home")
                 </div> <!-- end of site_title -->
+
+                <div id="search_box">
+                        <fieldset>
+                            <div style="align-items:center">
+                                <input type="text" value="Enter keyword here..." name="q" size="10" id="searchfield" title="searchfield" onfocus="clearText(this)" onblur="clearText(this)" />
+                                <input type="submit" name="Search" value="Search" id="searchbutton" title="Search" />
+                            </div>
+                        </fieldset>
+                </div>
+
             </div> <!-- end of header -->
 
             <div id="templatemo_menu">
                 <ul>
                     <li><a href="/Home/index"><span></span>Home</a></li>
+
+                    <li>
+                        <a href="#">
+                            <span></span>
+                            <div style="color: #fff">
+                                Create New Post
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span></span>
+                            <div style="color: #fff">
+                                Edit Posts
+                            </div>
+                        </a>
+                    </li>
                 </ul>
+
+                <div id="register_box">
+                        @Html.ActionLink("LogIn", "Login", "Account") <span>OR</span> @Html.ActionLink("Register", "Register", "Account")
+                </div>
             </div> <!-- end of templatemo_menu -->
 
             <div id="templatemo_main">
@@ -655,7 +686,6 @@
                             <li><a href="#">&raquo; Free Fonts <span>(125)</span></a></li>
                             <li><a href="#">&raquo; Digital Illustrations <span>(215)</span></a></li>
                         </ul>
-
                     </div>
                     <div class="sidebar_box">
                         <h3>Archives</h3>
