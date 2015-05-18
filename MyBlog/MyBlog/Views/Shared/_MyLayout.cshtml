@@ -633,12 +633,17 @@
                 </div> <!-- end of site_title -->
 
                 <div id="search_box">
+                    @using (Html.BeginForm("Search", "Home"))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
                         <fieldset>
                             <div style="align-items:center">
                                 <input type="text" value="Enter keyword here..." name="q" size="10" id="searchfield" title="searchfield" onfocus="clearText(this)" onblur="clearText(this)" />
                                 <input type="submit" name="Search" value="Search" id="searchbutton" title="Search" />
                             </div>
                         </fieldset>
+                    }
                 </div>
 
             </div> <!-- end of header -->

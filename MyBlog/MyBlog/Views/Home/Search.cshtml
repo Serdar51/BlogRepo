@@ -1,0 +1,21 @@
+﻿@model IEnumerable<MyBlog.Models.Posts>
+@using MyBlog.Models
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Search Results</h2>
+<div id="templatemo_content">
+    @foreach (var item in Model)
+    {
+        <div class="post_box">
+            <h2><a href="#">@Html.DisplayFor(modelItem => item.Title)</a></h2>
+            <br />
+            <img src="~/Images/@item.PhotoLocation" alt="@item.PhotoLocation" width="500px" />
+            <div class="news_meta">Posted by @Html.DisplayFor(modelItem => (new BlogContext()).user.Find(item.UserId).Name), at @Html.DisplayFor(modelItem => item.Date) CODE EKLENECEK!</div>
+            <p align="justify">@Html.DisplayFor(modelItem => item.Body)</p>
+            <div class="cleaner"></div>
+        </div>
+    }
+</div>

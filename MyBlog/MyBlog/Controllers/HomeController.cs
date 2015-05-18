@@ -17,5 +17,11 @@ namespace MyBlog.Controllers
         {
             return View(db.post.ToList());
         }
+
+        [HttpPost]
+        public ActionResult Search(string q)
+        {
+            return View(db.post.SqlQuery("Select * from Posts where Body like '%" + q + "%' or Title like '%" + q + "%'").ToList());
+        }
     }
 }
