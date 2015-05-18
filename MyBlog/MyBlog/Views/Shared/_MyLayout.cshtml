@@ -653,25 +653,45 @@
                     <li><a href="/Home/index"><span></span>Home</a></li>
 
                     <li>
-                        <a href="#">
-                            <span></span>
-                            <div style="color: #fff">
-                                Create New Post
-                            </div>
-                        </a>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <a href="/MyBlog/User/Create">
+                                <span></span>
+                                <div style="color: #fff">
+                                    Create New Post
+                                </div>
+                            </a>
+                        }
                     </li>
                     <li>
-                        <a href="#">
-                            <span></span>
-                            <div style="color: #fff">
-                                Edit Posts
-                            </div>
-                        </a>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <a href="/MyBlog/User/Edit">
+                                <span></span>
+                                <div style="color: #fff">
+                                    Edit Posts
+                                </div>
+                            </a>
+                        }
                     </li>
                 </ul>
 
                 <div id="register_box">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <div style="color: #fff; text-decoration: underline;">
+                            Welcome
+                            <strong style="text-emphasis-color:#000">
+                                @System.Web.HttpContext.Current.User.Identity.Name!
+                            </strong>
+                        </div>
+
+                    }
+                    else
+                    {
                         @Html.ActionLink("LogIn", "Login", "Account") <span>OR</span> @Html.ActionLink("Register", "Register", "Account")
+
+                    }
                 </div>
             </div> <!-- end of templatemo_menu -->
 
