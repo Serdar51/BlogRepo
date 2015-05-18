@@ -682,7 +682,7 @@
                         <div style="color: #fff; text-decoration: underline;">
                             Welcome
                             <strong style="text-emphasis-color:#000">
-                                @System.Web.HttpContext.Current.User.Identity.Name!
+                                @System.Web.HttpContext.Current.User.Identity.Name! @Html.ActionLink("Logout", "Logout", "Account")
                             </strong>
                         </div>
 

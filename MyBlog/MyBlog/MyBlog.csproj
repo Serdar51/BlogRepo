@@ -139,6 +139,7 @@
     <Compile Include="Models\BlogContextInitializer.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Posts.cs" />
     <Compile Include="Models\Register.cs" />
     <Compile Include="Models\Users.cs" />
@@ -232,6 +233,7 @@
     <Content Include="Views\Shared\_MyLayout.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,7 +11,7 @@ namespace MyBlog.Models
         {
             BlogContext db = new BlogContext();
 
-            int userForName = db.user.Count(x => x.EMailAddress.Equals(_Name));
+            int userForName = db.user.Count(x => x.Name.Equals(_Name));
             int userForEMail = db.user.Count(x => x.EMailAddress.Equals(_EMailAddress));
 
             // If there exists an account with the same user name it returns 1
