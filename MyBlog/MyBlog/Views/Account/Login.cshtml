@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 <h2>Login</h2>
-<div id="templatemo_content">
+<div id="templatemo_content" style="min-height: 400px">
     @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { style = "width:600px" }))
     {
         @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")

@@ -6,7 +6,7 @@
 }
 
 <h2>Register</h2>
-<div id="templatemo_content">
+<div id="templatemo_content" style="min-height: 400px">
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { style = "width:600px" }))
     {
         @Html.AntiForgeryToken()

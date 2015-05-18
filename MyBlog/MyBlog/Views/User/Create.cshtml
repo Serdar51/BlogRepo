@@ -7,7 +7,7 @@
 }
 
 <h2>Create</h2>
-<div id="templatemo_content">
+<div id="templatemo_content" style="min-height: 400px">
     @using (Html.BeginForm("Create", "User", FormMethod.Post, new { style = "width:600px", enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()

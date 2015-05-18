@@ -1,0 +1,33 @@
+﻿@model MyBlog.Models.Posts
+
+@{
+    ViewBag.Title = "PostDetail";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Post Detail</h2>
+
+<div id="templatemo_content" style="min-height: 400px">
+    <div>
+        @if (ViewData["Error"] == null)
+        {
+            <div class="post_box">
+                <h2>@Html.ActionLink(Model.Title, "PostDetail", "Display", new { @id = Model.Id }, null)</h2>
+                <div class="news_meta">Posted by @Html.DisplayFor(modelItem => (new MyBlog.Models.BlogContext()).user.Find(Model.UserId).Name), at @Html.DisplayFor(modelItem => Model.Date) @Html.ActionLink("Comments", "Index", "User")</div>
+                <br />
+                <img src="~/Images/@Model.PhotoLocation" alt="@Model.PhotoLocation" width="500px" />
+                <p align="justify">
+
+                    @Html.DisplayFor(modelItem => Model.Body)
+                </p>
+                <div class="cleaner"></div>
+            </div>
+        }
+        else
+        {
+            <h2>
+                @ViewData["Error"]
+            </h2>
+        }
+    </div>
+</div>
