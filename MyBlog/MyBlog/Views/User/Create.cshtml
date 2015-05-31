@@ -13,47 +13,46 @@
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
 
+    <div class="container">
         <div class="post_box">
-            <fieldset>
-                <legend>Posts</legend>
-
-                <div class="editor-label">
-                    @Html.Label("Type Post Title")
-                </div>
-                <div class="editor-field">
-                    @Html.EditorFor(model => model.Title)
-                    @Html.ValidationMessageFor(model => model.Title)
-                </div>
-                <div class="editor-label">
-                    @Html.Label("Type Post")
-                </div>
-                <div class="editor-field">
-                    @Html.TextAreaFor(model => model.Body)
-                    @Html.ValidationMessageFor(model => model.Body)
-                </div>
-                <div class="editor-label">
-                    @Html.Label("Choose a Category")
-                </div>
-                <div>
-                    <select id="Category" name="Category">
-                        <option value="Technology">Technology</option>
-                        <option value="Music">Music</option>
-                        <option value="Sport">Sport</option>
-                        <option value="Entertaintment">Entertaintment</option>
-                        <option value="Social">Social Live</option>
-                    </select>
-                </div>
-                <div class="editor-label">
-                    @Html.Label("Browse Post Image")
-                </div>
-                <div class="editor-field">
-                    <input id="PhotoLocation" title="Upload a product image"
-                           type="file" name="file" />
-                </div>
-                <p>
-                    <input type="submit" value="Create" />
-                </p>
-            </fieldset>
+            <div class="editor-label">
+                @Html.Label("Type Post Title")
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Title, new { @required = "Required"})
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+            <div class="editor-label">
+                @Html.Label("Type Post")
+            </div>
+            <div class="editor-field">
+                @Html.TextAreaFor(model => model.Body, new { @required = "Required" })
+                @Html.ValidationMessageFor(model => model.Body)
+            </div>
+            <div class="editor-label">
+                @Html.Label("Choose a Category")
+            </div>
+            <div>
+                <select id="Category" name="Category" required="Required">
+                    <option value=""></option>
+                    <option value="Technology">Technology</option>
+                    <option value="Music">Music</option>
+                    <option value="Sport">Sport</option>
+                    <option value="Entertaintment">Entertaintment</option>
+                    <option value="Social">Social Live</option>
+                </select>
+            </div>
+            <div class="editor-label">
+                @Html.Label("Browse Post Image")
+            </div>
+            <div class="editor-field">
+                <input id="PhotoLocation" title="Upload a post image"
+                       type="file" name="file" accept="image/jpeg" required="Required"/>
+            </div>
+            <p>
+                <input type="submit" value="Create" />
+            </p>
         </div>
+    </div>
     }
 </div>

@@ -11,13 +11,13 @@
     <div>
         @if (ViewData["Error"] == null)
         {
-            <div class="post_box">
+            <div class="post_box" style="width:600px">
                 <h2>@Html.ActionLink(Model.Title, "PostDetail", "Display", new { @id = Model.Id }, null)</h2>
-                <div class="news_meta">Posted by @Html.DisplayFor(modelItem => (new MyBlog.Models.BlogContext()).user.Find(Model.UserId).Name), at @Html.DisplayFor(modelItem => Model.Date) @Html.ActionLink("Comments", "Index", "User")</div>
+                <div class="news_meta">Posted by @Html.DisplayFor(modelItem => (new MyBlog.Models.BlogContext()).user.Find(Model.UserId).Name), at @Html.DisplayFor(modelItem => Model.Date)</div>
                 <br />
-                <img src="~/Images/@Model.PhotoLocation" alt="@Model.PhotoLocation" width="500px" />
-                <p align="justify">
-
+                <img src="~/Images/@Model.PhotoLocation" alt="@Model.PhotoLocation" width="600px" />
+                <p align="justify" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size:16px">
+                    <br />
                     @Html.DisplayFor(modelItem => Model.Body)
                 </p>
                 <div class="cleaner"></div>

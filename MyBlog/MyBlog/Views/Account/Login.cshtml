@@ -4,36 +4,28 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
+
 <h2>Login</h2>
 <div id="templatemo_content" style="min-height: 400px">
-    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { style = "width:600px" }))
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { style = "width:500px" }))
     {
         @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
-        <div class="post_box">
-            <fieldset style="height:200px">
-                <legend>Account Information</legend>
+        <div class="container">
                 <div>
-                    @Html.LabelFor(model => model.UserName)
-                </div>
-                <div>
-                    @Html.TextBoxFor(model => model.UserName)
+                    @Html.TextBoxFor(model => model.UserName, new { placeholder = "User Name", @required = "Required" })
                     @Html.ValidationMessageFor(model => model.UserName)
                 </div>
                 <div>
-                    @Html.LabelFor(model => model.Password)
-                </div>
-                <div>
-                    @Html.PasswordFor(model => model.Password)
+                    @Html.TextBoxFor(model => model.Password, new { placeholder = "Password", @type = "Password", @required = "Required" })
                     @Html.ValidationMessageFor(model => model.Password)
                 </div>
                 <div>
-                    @Html.CheckBoxFor(model => model.RememberMe)
                     @Html.LabelFor(model => model.RememberMe)
+                    @Html.CheckBoxFor(model => model.RememberMe)
                 </div>
                 <p>
                     <input type="submit" value="Log In" />
                 </p>
-            </fieldset>
         </div>
     }
 </div>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<MyBlog.Models.Posts>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<style type="text/css">
+    .tftable {
+        font-size: 12px;
+        color: #333333;
+        width: 100%;
+        border-width: 1px;
+        border-color: #729ea5;
+        border-collapse: collapse;
+    }
+
+        .tftable th {
+            width:100px;
+            font-size: 12px;
+            background-color: #acc8cc;
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #729ea5;
+            text-align: left;
+        }
+
+        .tftable tr {
+            background-color: #d4e3e5;
+        }
+
+        .tftable td {
+            width:100px;
+            font-size: 12px;
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #729ea5;
+        }
+
+        .tftable tr:hover {
+            background-color: #ffffff;
+        }
+</style>
+
+<h2>Your All Posts</h2>
+
+<div id="templatemo_content" style="min-height: 400px">
+    @if (Model != null)
+    {
+        <table class="tftable" border="1">
+            <tr>
+                <th>Post ID</th>
+                <th>Title</th>
+                <th>Created Date</th>
+                <th>Action</th>
+                <th>Action</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <table class="tftable" border="1">
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "User", new { @id = item.Id }, null)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Delete", "Delete", "User", new { @id = item.Id }, null)
+                        </td>
+                    </tr>
+                </table>
+            }
+        </table>
+    }
+    else
+    {
+        <h3>There is no post you have!</h3>
+    }
+</div>

@@ -14,8 +14,8 @@ namespace MyBlog.Controllers
             BlogContext db = new BlogContext();
 
             Posts post = new Posts();
-
-            if (db.post.Count() >= id)
+             
+            if (db.post.Any(o => o.Id == id))
             {
                 ViewData["Error"] = null;
                 post = db.post.Find(id);

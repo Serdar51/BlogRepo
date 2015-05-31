@@ -6,8 +6,133 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>My Blog</title>
     @RenderSection("head", false)
+        <style type='text/css'>
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 80px 0;
+        height: 400px;
+        text-align: center;
+    }
 
-    <style type='text/css'>
+        .container h1 {
+            font-size: 40px;
+            -webkit-transition-duration: 1s;
+            transition-duration: 1s;
+            -webkit-transition-timing-function: ease-in-put;
+            transition-timing-function: ease-in-put;
+            font-weight: 200;
+        }
+
+    form {
+        padding: 0px 0px;
+        position: relative;
+        z-index: 2;
+    }
+
+        form input {
+            appearance: none;
+            outline: 0;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 250px;
+            border-radius: 3px;
+            padding: 10px 15px;
+            margin: 0 auto 10px auto;
+            display: block;
+            text-align: center;
+            font-size: 18px;
+            color: white;
+            -webkit-transition-duration: 0.25s;
+            transition-duration: 0.25s;
+            font-weight: 300;
+        }
+
+            form input:hover {
+                background-color: rgba(255, 255, 255, 0.4);
+            }
+
+            form input:focus {
+                background-color: white;
+                width: 300px;
+                color: #53e3a6;
+            }
+
+        form select {
+            appearance: none;
+            outline: 0;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 250px;
+            border-radius: 3px;
+            padding: 10px 15px;
+            margin: 0 auto 10px auto;
+            display: block;
+            text-align: center;
+            font-size: 18px;
+            color: white;
+            -webkit-transition-duration: 0.25s;
+            transition-duration: 0.25s;
+            font-weight: 300;
+        }
+
+            form select:hover {
+                background-color: rgba(255, 255, 255, 0.4);
+            }
+
+            form select:focus {
+                background-color: white;
+                width: 300px;
+                color: #53e3a6;
+            }
+
+        form textarea {
+            appearance: none;
+            outline: 0;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 250px;
+            border-radius: 3px;
+            padding: 10px 15px;
+            margin: 0 auto 10px auto;
+            display: block;
+            text-align: center;
+            font-size: 18px;
+            color: white;
+            -webkit-transition-duration: 0.25s;
+            transition-duration: 0.25s;
+            font-weight: 300;
+        }
+
+            form textarea:hover {
+                background-color: rgba(255, 255, 255, 0.4);
+            }
+
+            form textarea:focus {
+                background-color: white;
+                width: 300px;
+                color: #53e3a6;
+            }
+
+        form button {
+            appearance: none;
+            outline: 0;
+            background-color: white;
+            border: 0;
+            padding: 10px 15px;
+            color: #53e3a6;
+            border-radius: 3px;
+            width: 250px;
+            cursor: pointer;
+            font-size: 18px;
+            -webkit-transition-duration: 0.25s;
+            transition-duration: 0.25s;
+        }
+
+            form button:hover {
+                background-color: #f5f7f9;
+            }
+
         body {
             margin: 0px;
             padding: 0px;
@@ -224,7 +349,7 @@
 
         #site_title {
             float: left;
-            width: 500px;
+            width: 400px;
             padding: 40px 0 30px;
             font-family: Georgia, "Times New Roman", Times, serif;
         }
@@ -253,23 +378,24 @@
             float: right;
             width: 280px;
             height: 30px;
+            padding-top:30px;
         }
 
             #search_box form {
                 clear: both;
-                width: 280px;
+                width: 300px;
                 height: 30px;
                 padding: 0;
             }
 
         #searchfield {
-            height: 20px;
-            width: 160px;
+            height: 30px;
+            width: 250px;
             padding: 2px 5px;
             color: #666666;
             line-height: 0;
-            background: none;
-            border: 1px solid #444444;
+            background: #ffffff;
+            border: 2px solid #444444;
         }
 
         #searchbutton {
@@ -367,7 +493,7 @@
 
         #templatemo_content {
             float: left;
-            width: 620px;
+            width: 500px;
         }
 
         .post_box {
@@ -386,7 +512,7 @@
 
             .post_box .news_meta {
                 margin-bottom: 10px;
-                font-size: 11px;
+                font-size: 14px;
                 color: #666;
             }
 
@@ -637,12 +763,9 @@
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
-                        <fieldset>
-                            <div style="align-items:center">
-                                <input type="text" value="Enter keyword here..." name="q" size="10" id="searchfield" title="searchfield" onfocus="clearText(this)" onblur="clearText(this)" />
-                                <input type="submit" name="Search" value="Search" id="searchbutton" title="Search" />
-                            </div>
-                        </fieldset>
+                        <div>
+                            @Html.TextBox("q", null, new { @placeholder = "Enter keyword here to search...", @type="search"})
+                        </div>
                     }
                 </div>
 
@@ -666,7 +789,7 @@
                     <li>
                         @if (Request.IsAuthenticated)
                         {
-                            <a href="/User/Edit">
+                            <a href="/User/Index">
                                 <span></span>
                                 <div style="color: #fff">
                                     Edit Posts
@@ -706,21 +829,26 @@
                         <ul class="sidebar_menu">
                             <li><a href="#">&raquo; Technology<span>(260)</span></a></li>
                         </ul>
+                        <p>My Nana gave me a t-shirt as a child which read, "Why should I clean my room when the world is in such a mess." I used to love it and wear it in opposition, as if I was smarter than those adults asking me to tidy up after myself. I now realize, while funny, this t-shirt sort of embodies our problem. Caring for ourselves, for our environment, is a part of self-love and the first step in caring for the world. So while many are out there trying to make the world a better place, just don't forget to do the same in your own home with your own family.</p>
                     </div>
                     <div class="sidebar_box">
                         <ul class="sidebar_menu">
                             <li><a href="#">&raquo; Sport<span>(260)</span></a></li>
                         </ul>
+                        <p>My Nana gave me a t-shirt as a child which read, "Why should I clean my room when the world is in such a mess." I used to love it and wear it in opposition, as if I was smarter than those adults asking me to tidy up after myself. I now realize, while funny, this t-shirt sort of embodies our problem. Caring for ourselves, for our environment, is a part of self-love and the first step in caring for the world. So while many are out there trying to make the world a better place, just don't forget to do the same in your own home with your own family.</p>
                     </div>
                     <div class="sidebar_box">
                         <ul class="sidebar_menu">
                             <li><a href="#">&raquo; Entertaintment<span>(260)</span></a></li>
                         </ul>
+                        <p>My Nana gave me a t-shirt as a child which read, "Why should I clean my room when the world is in such a mess." I used to love it and wear it in opposition, as if I was smarter than those adults asking me to tidy up after myself. I now realize, while funny, this t-shirt sort of embodies our problem. Caring for ourselves, for our environment, is a part of self-love and the first step in caring for the world. So while many are out there trying to make the world a better place, just don't forget to do the same in your own home with your own family.</p>
                     </div>
                     <div class="sidebar_box">
                         <ul class="sidebar_menu">
                             <li><a href="#">&raquo; Social Life<span>(260)</span></a></li>
                         </ul>
+                        <p>My Nana gave me a t-shirt as a child which read, "Why should I clean my room when the world is in such a mess." I used to love it and wear it in opposition, as if I was smarter than those adults asking me to tidy up after myself. I now realize, while funny, this t-shirt sort of embodies our problem. Caring for ourselves, for our environment, is a part of self-love and the first step in caring for the world. So while many are out there trying to make the world a better place, just don't forget to do the same in your own home with your own family.</p>
+
                     </div>
                     <div class="sidebar_box">
                         <h3>Archives</h3>

@@ -1,0 +1,49 @@
+﻿@model MyBlog.Models.Posts
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<div id="templatemo_content" style="min-height: 400px">
+    @using (Html.BeginForm("Delete", "User", FormMethod.Post, new { style = "width:600px", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+    <div class="container">
+        <div class="post_box">
+            <fieldset>
+                <div class="display-label">
+                    @Html.Label("Title")
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.Title)
+                </div>
+                <div class="display-label">
+                    @Html.Label("Body")
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.Body)
+                </div>
+                <div class="display-field">
+                    @Html.HiddenFor(model => model.UserId)
+                </div>
+                <div class="display-field">
+                    @Html.HiddenFor(model => model.Id)
+                </div>
+                <div class="display-field">
+                    @Html.HiddenFor(model => model.PhotoLocation)
+                </div>
+                <div>
+                    <input type="submit" value="Delete" />
+                    <a href="~/User/Index"><input type="button" value="Cancel" /></a>
+                </div>
+
+            </fieldset>
+        </div>
+    </div>
+    }
+</div>

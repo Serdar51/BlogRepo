@@ -6,44 +6,29 @@
 }
 
 <h2>Register</h2>
+
 <div id="templatemo_content" style="min-height: 400px">
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { style = "width:600px" }))
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { style = "width:500px" }))
     {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-        <div class="post_box">
-            <fieldset>
-                <legend>Users</legend>
-
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.Name)
-                </div>
-                <div class="editor-field">
-                    @Html.EditorFor(model => model.Name)
-                    @Html.ValidationMessageFor(model => model.Name)
-                </div>
-
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.EMailAddress)
-                </div>
-                <div class="editor-field">
-                    @Html.EditorFor(model => model.EMailAddress)
-                    @Html.ValidationMessageFor(model => model.EMailAddress)
-                </div>
-
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.Password)
-                </div>
-                <div class="editor-field">
-                    @Html.PasswordFor(model => model.Password)
-                    @Html.ValidationMessageFor(model => model.Password)
-                </div>
-                <p>
-                    <input type="submit" value="Create" />
-                </p>
-            </fieldset>
+        @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
+        <div class="container">
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Name, new { @required = "Required", @placeholder = "Type a User Name" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.EMailAddress, new {@type = "email", @required = "Required", @placeholder = "Type your Email Address"})
+                @Html.ValidationMessageFor(model => model.EMailAddress)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Password, new { @placeholder = "Password", @type = "Password", @required = "Required"})
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+            <p>
+                <input type="submit" value="Create" />
+            </p>
         </div>
     }
-
 </div>
-
+<script src="/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="/Scripts/jquery.validate.unobtrusive.min.js"></script>

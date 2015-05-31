@@ -25,5 +25,8 @@ namespace MyBlog.Models
 
         [Required]
         public DateTime Date { set; get; }
+
+        [Required]
+        public string Category { set; get; }
     }
 }

@@ -72,8 +72,12 @@ namespace MyBlog.Controllers
                 {
                     ModelState.AddModelError("", "There already exist an account that has the followings. Please enter different user name or email address!!");
                 }
+                return View();
             }
-            return View();
+            else
+            {
+                return RedirectToAction("Register", "Account");
+            }
         }
     }
 }

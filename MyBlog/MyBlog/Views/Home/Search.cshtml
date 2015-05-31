@@ -13,16 +13,25 @@
 
             <div class="post_box">
                 <h2>@Html.ActionLink(item.Title, "PostDetail", "Display", new { @id = item.Id }, null)</h2>
-                <div class="news_meta">Posted by @Html.DisplayFor(modelItem => (new BlogContext()).user.Find(item.UserId).Name), at @Html.DisplayFor(modelItem => item.Date) @Html.ActionLink("Comments", "Index", "User")</div>
+                <div class="news_meta">Posted by @Html.DisplayFor(modelItem => (new BlogContext()).user.Find(item.UserId).Name), at @Html.DisplayFor(modelItem => item.Date)</div>
                 <br />
                 <img src="~/Images/@item.PhotoLocation" alt="@item.PhotoLocation" width="500px" />
-                <p align="justify">
+                <p align="justify" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size:14px">
+                    <br />
                     @{
-        string str = item.Body.Substring(0, 300);
+                        string str;
+                        if (item.Body.Length > 300)
+                        {
+                            str = item.Body.Substring(0, 300);
+                        }
+                        else
+                        {
+                            str = item.Body.Substring(0, item.Body.Length / 2);
+                        }
                     }
-
                     @Html.DisplayFor(modelItem => str)@Html.ActionLink(" continue to read", "PostDetail", "Display", new { @id = item.Id }, null)
                 </p>
+
                 <div class="cleaner"></div>
             </div>
         </div>
