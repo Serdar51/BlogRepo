@@ -1,4 +1,14 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+﻿@using MyBlog.Models;
+@{
+    BlogContext db = new BlogContext();
+    int NumTechPosts = db.post.Count(p => p.Category.Equals("Technology"));
+    int NumSportPosts = db.post.Count(p => p.Category.Equals("Sport"));
+    int NumMagezie_MusicPosts = db.post.Count(p => p.Category.Equals("Magazine/Music"));
+    int NumPoliticsPosts = db.post.Count(p => p.Category.Equals("Politics"));
+    int NumLiteraturePosts = db.post.Count(p => p.Category.Equals("Literature"));
+}
+
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns='http://www.w3.org/1999/xhtml'>
@@ -6,7 +16,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>My Blog</title>
     @RenderSection("head", false)
-        <style type='text/css'>
+
+<style type='text/css'>
     .container {
         max-width: 600px;
         margin: 0 auto;
@@ -363,7 +374,7 @@
                 text-decoration: none;
             }
 
-                #site_title a span {
+                #site_title li span {
                     color: #F00;
                 }
 
@@ -595,7 +606,7 @@
                     font-size: 11px;
                 }
 
-                    .sidebar_menu li a span {
+                    .sidebar_menu li span {
                         color: #f00;
                     }
 
@@ -738,7 +749,7 @@
         }
     </style>
 
-    <script language="javascript" type="text/javascript">
+<script language="javascript" type="text/javascript">
 
         function clearText(field) {
         if (field.defaultValue == field.value) field.value = '';
@@ -746,8 +757,8 @@
     }
 
     </script>
-</head>
 
+</head>
 <body>
     <div id="templatemo_body_wrapper">
         <div id="templatemo_wrapper">
@@ -759,7 +770,7 @@
                 </div> <!-- end of site_title -->
 
                 <div id="search_box">
-                    @using (Html.BeginForm("Search", "Home"))
+                    @using (Html.BeginForm("Search", "Home", FormMethod.Get))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
@@ -827,59 +838,53 @@
                     <h3>Categories</h3>
                     <div class="sidebar_box">
                         <ul class="sidebar_menu">
-                            <li><a href="#">&raquo; Technology<span>(260)</span></a></li>
+                            <li>@Html.ActionLink("Technology", "SearchCategory", "Display", new { CategoryName = "Technology" }, null)<span>(@NumTechPosts)</span></li>
                         </ul>
-                        <p>My Nana gave me a t-shirt as a child which read, "Why should I clean my room when the world is in such a mess." I used to love it and wear it in opposition, as if I was smarter than those adults asking me to tidy up after myself. I now realize, while funny, this t-shirt sort of embodies our problem. Caring for ourselves, for our environment, is a part of self-love and the first step in caring for the world. So while many are out there trying to make the world a better place, just don't forget to do the same in your own home with your own family.</p>
+                        <p>
+                            This Blog is all about IT-related technology, news, events, gossip and 
+                            what's happening in this fast-changing world. 
+                            You will also read what's happening in the world of the Wireless industry,
+                            Internet security, Web hosting plus a whole range of topics in the IT world. 
+                            This Blog is updated many times a day, so visit often to get the latest news, events and gossip.
+                        </p>
                     </div>
                     <div class="sidebar_box">
                         <ul class="sidebar_menu">
-                            <li><a href="#">&raquo; Sport<span>(260)</span></a></li>
+                            <li>@Html.ActionLink("Sport", "SearchCategory", "Display", new { CategoryName = "Sport" }, null)<span>(@NumSportPosts)</span></li>
                         </ul>
-                        <p>My Nana gave me a t-shirt as a child which read, "Why should I clean my room when the world is in such a mess." I used to love it and wear it in opposition, as if I was smarter than those adults asking me to tidy up after myself. I now realize, while funny, this t-shirt sort of embodies our problem. Caring for ourselves, for our environment, is a part of self-love and the first step in caring for the world. So while many are out there trying to make the world a better place, just don't forget to do the same in your own home with your own family.</p>
+                        <p>
+                            It's a somewhat comprehensive world sports blog that promises to cover football, 
+                            hockey, basketball, baseball, and all other world sports in various levels of detail.
+                        </p>
                     </div>
                     <div class="sidebar_box">
                         <ul class="sidebar_menu">
-                            <li><a href="#">&raquo; Entertaintment<span>(260)</span></a></li>
+                            <li>@Html.ActionLink("Magazine/Music", "SearchCategory", "Display", new { CategoryName = "Magazine/Music" }, null)<span>(@NumMagezie_MusicPosts)</span></li>
                         </ul>
-                        <p>My Nana gave me a t-shirt as a child which read, "Why should I clean my room when the world is in such a mess." I used to love it and wear it in opposition, as if I was smarter than those adults asking me to tidy up after myself. I now realize, while funny, this t-shirt sort of embodies our problem. Caring for ourselves, for our environment, is a part of self-love and the first step in caring for the world. So while many are out there trying to make the world a better place, just don't forget to do the same in your own home with your own family.</p>
+                        <p>
+                            This Blog is also an online music magazine and community platform 
+                            that's dedicated to showcasing electronic music, artists and events across the globe. 
+                        </p>
                     </div>
                     <div class="sidebar_box">
                         <ul class="sidebar_menu">
-                            <li><a href="#">&raquo; Social Life<span>(260)</span></a></li>
+                            <li>@Html.ActionLink("Politics", "SearchCategory", "Display", new { CategoryName = "Politics" }, null)<span>(@NumPoliticsPosts)</span></li>
                         </ul>
-                        <p>My Nana gave me a t-shirt as a child which read, "Why should I clean my room when the world is in such a mess." I used to love it and wear it in opposition, as if I was smarter than those adults asking me to tidy up after myself. I now realize, while funny, this t-shirt sort of embodies our problem. Caring for ourselves, for our environment, is a part of self-love and the first step in caring for the world. So while many are out there trying to make the world a better place, just don't forget to do the same in your own home with your own family.</p>
-
+                        <p>
+                            You will find articles about the most discussed topics, opinion pieces and 
+                            news related to politics that force to think different perspectives.
+                        </p>
                     </div>
                     <div class="sidebar_box">
-                        <h3>Archives</h3>
-                        <ul class="sm_two_col">
-                            <li><a href="#">&raquo; February 2048</a></li>
-                            <li><a href="#">&raquo; January 2048</a></li>
-                            <li class="cleaner"><a href="#">&raquo; December 2047</a></li>
-                            <li><a href="#">&raquo; Novermber 2047</a></li>
-                            <li><a href="#">&raquo; October 2047</a></li>
-                            <li><a href="#">&raquo; September 2047</a></li>
+                        <ul class="sidebar_menu">
+                            <li>@Html.ActionLink("Literature", "SearchCategory", "Display", new { CategoryName = "Literature" }, null)<span>(@NumLiteraturePosts)</span></li>
                         </ul>
-
-                        <div class="cleaner"></div>
+                        <p>
+                            This category combines straightforward reporting on book world happenings 
+                            with links to exciting literary content elsewhere on the web.
+                        </p>
                     </div>
-
-
-                    <div class="sidebar_box">
-
-                        <h3>Newsletter</h3>
-
-                        <form method="get" action="#">
-                            <input type="text" id="user" name="user" class="newsletter_email" value="Enter your email address" onfocus="clearText(this)" onblur="clearText(this)" />
-                            <input style="font-weight: bold;" type="submit" name="submit" id="submit" value="Subscribe" />
-                        </form>
-
-                        <div class="cleaner_h20"></div>
-                        <a href="#" class="icon_link"><img src="images/templatemo_rss.jpg" alt="rss" /></a><a href="#" class="icon_link"><img src="images/templatemo_twitter.jpg" alt="twitter" /></a>
-                    </div>
-
                 </div>
-
                 <div class="cleaner"></div>
             </div>
 
@@ -887,55 +892,8 @@
         <div class="cleaner"></div>
     </div>
 
-
-    <div id="templatemo_footer_wrapper">
-        <div id="templatemo_footer">
-
-            <div class="footer_box col_w300">
-                <h4>Related Posts</h4>
-                <ul class="footer_menu">
-                    <li><a href="#">Duis vitae velit sed lesuada dignissim</a></li>
-                    <li><a href="#">Donec mollis aliquet ligula</a></li>
-                    <li><a href="#">Maecenas adipiscing elementum ipsum</a></li>
-                    <li><a href="#">Vivamus leo velit, convallis id</a></li>
-                    <li><a href="#">Curabitur condimentum porttitor</a></li>
-                </ul>
-            </div>
-
-            <div class="footer_box col_w160">
-                <h4>Authors</h4>
-                <ul class="footer_menu">
-                    <li><a href="#">Lesuada digni</a></li>
-                    <li><a href="#">Aliquet ligula</a></li>
-                    <li><a href="#">Convallis id</a></li>
-                    <li><a href="#">Maecenas adipis</a></li>
-                    <li><a href="#">Porttitor</a></li>
-                </ul>
-            </div>
-
-            <div class="footer_box col_w160">
-                <h4>Partners</h4>
-                <ul class="footer_menu">
-                    <li><a href="http://www.flashmo.com/page/1" target="_parent">Flash Components</a></li>
-                    <li><a href="http://www.templatemo.com/page/1" target="_parent">Website Templates</a></li>
-                    <li><a href="http://www.webdesignmo.com/blog" target="_parent">Web Design</a></li>
-                    <li><a href="http://www.templatemo.com" target="_parent">CSS Templates</a></li>
-                    <li><a href="http://www.koflash.com" target="_parent">Flash Web Gallery</a></li>
-                </ul>
-            </div>
-
-            <div class="footer_box col_w260 fb_last">
-                <h4>Tag Cloud</h4>
-                <a href="#" style="font-size:12px">Aenean</a> <a href="#" style="font-size:11px">Cursus</a> <a href="#" style="font-size:16px">Maecenas</a> <a href="#" style="font-size:11px">Aliquam Ligula</a> <a href="#" style="font-size:20px">Egestas</a> <a href="#" style="font-size:16px">Suscipit</a> <a href="#" style="font-size:12px">Sapien</a> <a href="#" style="font-size:28px">Dignissim</a> <a href="#" style="font-size:14px">Vestibulum</a> <a href="#" style="font-size:12px">Lorem</a> <a href="#" style="font-size:14px">Urnain</a> <a href="#" style="font-size:20px">Neque</a> <a href="#" style="font-size:12px">Aenean</a>
-            </div>
-
-            <div class="cleaner"></div>
-        </div>
-    </div>
-
     <div id="templatemo_copyright">
-        Copyright © 2015 <a href="#">Your Company Name</a> |
-        <a href="http://www.iwebsitetemplate.com" target="_parent">Website Templates</a> by <a href="http://www.templatemo.com" target="_parent">Free CSS Templates</a>
+        Copyright © 2015 <a href="#">CeNG 311 Blog Project</a>
     </div>
 </body>
 

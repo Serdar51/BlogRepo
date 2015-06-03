@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MyBlog.Models;
+using PagedList;
 
 namespace MyBlog.Controllers
 {
@@ -13,15 +14,20 @@ namespace MyBlog.Controllers
     {
         private BlogContext db = new BlogContext();
 
-        public ActionResult Index()
+        public ViewResult Index(int? page)
         {
-            return View(db.post.ToList());
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);
+            return View(db.post.OrderBy(p => p.Date).ToPagedList(pageNumber, pageSize));
         }
 
-        [HttpPost]
-        public ActionResult Search(string q)
+        [HttpGet]
+        public ActionResult Search(string q, int? page)
         {
-            return View(db.post.SqlQuery("Select * from Posts where Body like '%" + q + "%' or Title like '%" + q + "%'").ToList());
+            ViewData["Key"] = q;
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);
+            return View(db.post.SqlQuery("Select * from Posts where Body like '%" + q + "%' or Title like '%" + q + "%'").OrderBy(p => p.Date).ToPagedList(pageNumber, pageSize));
         }
     }
 }

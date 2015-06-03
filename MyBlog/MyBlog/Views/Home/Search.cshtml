@@ -1,5 +1,9 @@
-﻿@model IEnumerable<MyBlog.Models.Posts>
-@using MyBlog.Models
+﻿@model  PagedList.IPagedList<MyBlog.Models.Posts>
+@using MyBlog.Models;
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
 @{
     ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
@@ -11,11 +15,14 @@
     {
         <div>
 
-            <div class="post_box">
+            <div class="post_box" style="width:600px">
                 <h2>@Html.ActionLink(item.Title, "PostDetail", "Display", new { @id = item.Id }, null)</h2>
-                <div class="news_meta">Posted by @Html.DisplayFor(modelItem => (new BlogContext()).user.Find(item.UserId).Name), at @Html.DisplayFor(modelItem => item.Date)</div>
+                <div class="news_meta">Posted by @Html.DisplayFor(modelItem => (new BlogContext()).user.Find(item.UserId).Name), at @Html.DisplayFor(modelItem => item.Date) | Category: @Html.ActionLink(item.Category, "SearchCategory", "Display", new { CategoryName = item.Category }, null)</div>
                 <br />
-                <img src="~/Images/@item.PhotoLocation" alt="@item.PhotoLocation" width="500px" />
+                @if (System.IO.File.Exists(Request.MapPath("~/Images/" + item.PhotoLocation)))
+                {
+                    <img src="~/Images/@item.PhotoLocation" alt="@item.PhotoLocation" width="600px" height="300px" />
+                }
                 <p align="justify" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size:14px">
                     <br />
                     @{
@@ -34,6 +41,18 @@
 
                 <div class="cleaner"></div>
             </div>
+
         </div>
     }
+
+    <div style="text-align:center;margin: 0 auto;width:600px">
+        @Html.PagedListPager(Model, page => Url.Action("Search", new { page }))
+    </div>
 </div>
+
+<script type="text/javascript" src="~/Scripts/hilitor.js"></script>
+<script type="text/javascript">
+    var myHilitor = new Hilitor("content");
+    var key = '@ViewData["Key"]';
+    myHilitor.apply(key);
+</script>

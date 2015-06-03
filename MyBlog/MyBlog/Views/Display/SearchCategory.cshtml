@@ -4,7 +4,7 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "All Posts";
+    ViewBag.Title = "Posts ";
     Layout = "~/Views/Shared/_MyLayout.cshtml";
 }
 
@@ -16,7 +16,7 @@
 
             <div class="post_box" style="width:600px">
                 <h2>@Html.ActionLink(item.Title, "PostDetail", "Display", new { @id = item.Id }, null)</h2>
-                <div class="news_meta">Posted by @Html.DisplayFor(modelItem => (new BlogContext()).user.Find(item.UserId).Name), at @Html.DisplayFor(modelItem => item.Date) | Category: @Html.ActionLink(item.Category, "SearchCategory", "Display", new { CategoryName = item.Category }, null)</div>
+                <div class="news_meta">Posted by @Html.DisplayFor(modelItem => (new BlogContext()).user.Find(item.UserId).Name), at @Html.DisplayFor(modelItem => item.Date)</div>
                 <br />
                 @if (System.IO.File.Exists(Request.MapPath("~/Images/" + item.PhotoLocation)))
                 {
@@ -25,26 +25,24 @@
                 <p align="justify" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size:14px">
                     <br />
                     @{
-                        string str;
-                        if (item.Body.Length > 300)
-                        {
-                            str = item.Body.Substring(0, 300);
-                        }
-                        else
-                        {
-                            str = item.Body.Substring(0, item.Body.Length / 2);
-                        }
+                string str;
+                if (item.Body.Length > 300)
+                {
+                    str = item.Body.Substring(0, 300);
+                }
+                else
+                {
+                    str = item.Body.Substring(0, item.Body.Length / 2);
+                }
                     }
                     @Html.DisplayFor(modelItem => str)@Html.ActionLink(" continue to read", "PostDetail", "Display", new { @id = item.Id }, null)
                 </p>
-
-
 
                 <div class="cleaner"></div>
             </div>
         </div>
     }
     <div style="text-align:center;margin: 0 auto;width:600px">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        @Html.PagedListPager(Model, page => Url.Action("SearchCategory", new { CategoryName = Model.Single().Category, page }))
     </div>
 </div>
