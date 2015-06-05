@@ -29,5 +29,10 @@ namespace MyBlog.Controllers
             int pageNumber = (page ?? 1);
             return View(db.post.SqlQuery("Select * from Posts where Body like '%" + q + "%' or Title like '%" + q + "%'").OrderBy(p => p.Date).ToPagedList(pageNumber, pageSize));
         }
+
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }
