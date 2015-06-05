@@ -1,1 +1,1 @@
-Database file is automatically created in here after the program runs.
+Database file is automatically created in this directory after the program runs.
